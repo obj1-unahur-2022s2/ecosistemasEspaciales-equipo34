@@ -1,10 +1,23 @@
+import reservaNatural.*
+const desierto = new Habitat()
 
-describe "test de la reserva" {
-//probar cantidadTotalBiomasa(), habitatsDesequilibrados(), contieneEspecie(), especieEstaEnTodosLosHabitats() etc
+
+test "la reserva"
+{
+	
+
+assert.equals(reserva.habitatConMayorBiom(),0)
+assert.equals(reserva.contieneEspecie(tigre))
+assert.equals(reserva.habitatsNoEquilibrados(),0)
+assert.equals(reserva.biomasaTotal(),0)
 
 }
 
-describe "test de habitats" {
-//probar totalBiomasa(), producirIncendio(), 	
+test "habitats" {
+	
+	assert.equals(desierto.biomasaHabitat(),5) 
+	desierto.producirIncendio()
+	assert.equals(desierto.biomasaHabitat(),5) 
+
 	
 }

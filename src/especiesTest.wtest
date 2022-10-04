@@ -1,12 +1,40 @@
 
-describe "tests de animales" {
-//probar los métodos biomasa(), peso(), consecuenciasDelIncendio, esGrande(),
-//esPequenio(), esMediano(), estaVivo(), etc
-	
+import especies.*
+import reservaNatural.*
+
+const tigre = new Animal(especie="tiger",locomocion=correr,estaVivo=true,pesoReferencia=100,peso=10)
+const abedul = new Planta(especie="arbol",altura=500)
+test "tests de animales" 
+{
+
+
+
+assert.that(tigre.estaVivo())
+assert.equals(tigre.biomasa(),0.33334)
+assert.that(tigre.esPequenio())
+assert.that(not tigre.esGrande())
+assert.that(not tigre.esMediano())
+tigre.consecuenciasDelIncendio()
+assert.equals(tigre.peso(),10)
+assert.that(not tigre.estaVivo())
+
+
+
 
 }
 
-describe "tests de plantas" {
-//probar los métodos biomasa(), altura(), consecuenciasDelIncendio, esGrande(),
-//esPequenio(), estaVivo() etc
+test "tests de plantas" {
+	
+	
+		
+assert.that(abedul.estaVivo())
+assert.equals(abedul.biomasa(),1000)
+assert.that(not abedul.esPequenio())
+assert.that(abedul.esGrande())
+assert.that(not abedul.esMediano())
+abedul.consecuenciaDelIncendio()
+assert.equals(abedul.altura(),495)
+assert.that(abedul.estaVivo())
+
+
 }

@@ -4,7 +4,7 @@ class EspecieFauna {
 	
 	method coefDeEspecie()=pesoReferencia/2
 	
-	method locomocion()=[nadar,correr,quedarseQuieto,volar]
+
 	
 }
 
@@ -15,6 +15,8 @@ class EspecieFlora {
 
 class Animal {
 	var property peso
+	var property estaVivo
+	var property locomocion
 	var property biomasa=(peso**2)/especie.coefDeEspecie()
 	const property especie
 	
@@ -24,10 +26,9 @@ class Animal {
 	
 	method esMediano()= not self.esPequenio() and not self.esGrande()
 	
-	method sufrirIncendio(){
-		peso-=peso*0.1
-		
-	}
+	method sufrirIncendio(){ estaVivo= self.locomocion().seSalva()
+    				peso-=peso*0.1  }
+				}
 }
 
 class Planta {

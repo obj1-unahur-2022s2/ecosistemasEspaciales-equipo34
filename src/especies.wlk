@@ -1,6 +1,6 @@
 
 class EspecieFauna {
-	const property pesoReferencial=150
+	const property pesoReferencia=150
 		
 	 const property coefDeEspecie=pesoReferencial/2
    
@@ -29,7 +29,7 @@ class Animal {
 	method esMediano()= not self.esPequenio() and not self.esGrande()
 	
     
-    method consecuenciasDelIncendio() { estaVivo= self.locomocion().seSalva()
+    method consecuenciasDeIncendio() { estaVivo= self.locomocion().seSalva()
     									peso-= 10*peso/100  } 
     
     

@@ -9,22 +9,20 @@ object reserva {
 	method biomasaTotal(){
 		return habitats.sum({h=>h.biomasaHabitat()})
 	}
-	method hayEspecieEnHabitats(especie){
-		habitats.all({h=>h.hayEspecie(especie)}) 
+	method hayEspecieEnHabitats(sa){return habitats.sum({h=>h.especie()==sa})
 	}
+	
 	method habitatsNoEquilibrados()=habitats.filter({h=>not h.estaEnEquilibrio()})
 }
+    
 
 class Habitat {
-	const seresVivos = []	
 	
-	method hayEspecie(especie){
-		seresVivos.any({s=>s.especie()})
-	}
-	method producirIncendio(){
-		
-	}
+	const seresVivos = []
 	
+	method producirIncendio(){ return 
+		seresVivos.forEach{ a => a.consecuenciaDeIncendio() }
+	} 
 	method biomasaHabitat()=seresVivos.sum({s=>s.biomasa()})
 	
 	method cantPequenios()=seresVivos.count({s=>s.esPequenio()})
@@ -35,5 +33,10 @@ class Habitat {
 	
 	method estaEnEquilibrio()=(self.cantGrandes()<self.cantPequenios()/3) and self.cantMedianos()>=1
 		
-}
+
+
+	
+	}
+
+
 

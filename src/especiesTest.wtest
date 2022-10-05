@@ -1,40 +1,31 @@
-
 import especies.*
 import reservaNatural.*
 
-const tigre = new Animal(especie="tiger",locomocion=correr,estaVivo=true,pesoReferencia=100,peso=10)
-const abedul = new Planta(especie="arbol",altura=500)
-test "tests de animales" 
-{
+const flora = new EspecieFlora()
+const fauna = new EspecieFauna()
+const tigre = new Animal(especie = fauna,locomocion = correr,estaVivo = true,pesoReferencia = 100,peso = 10)
+const abedul = new Planta(especie = flora,altura = 500)
 
+test "tests de animales" {
 
-
-assert.that(tigre.estaVivo())
-assert.equals(tigre.biomasa(),0.33334)
-assert.that(tigre.esPequenio())
-assert.that(not tigre.esGrande())
-assert.that(not tigre.esMediano())
-tigre.consecuenciasDelIncendio()
-assert.equals(tigre.peso(),10)
-assert.that(not tigre.estaVivo())
-
-
-
-
+	assert.that(tigre.estaVivo())
+	assert.equals(tigre.biomasa(),100/75)
+	assert.that(tigre.esPequenio())
+	assert.that(not tigre.esGrande())
+	assert.that(not tigre.esMediano())
+	tigre.consecuenciasDeIncendio()
+	assert.equals(tigre.peso(),9)
+	assert.that(not tigre.estaVivo())
 }
 
 test "tests de plantas" {
-	
-	
-		
-assert.that(abedul.estaVivo())
-assert.equals(abedul.biomasa(),1000)
-assert.that(not abedul.esPequenio())
-assert.that(abedul.esGrande())
-assert.that(not abedul.esMediano())
-abedul.consecuenciaDelIncendio()
-assert.equals(abedul.altura(),495)
-assert.that(abedul.estaVivo())
-
-
+			
+	assert.that(abedul.estaVivo())
+	assert.equals(abedul.biomasa(),1000)
+	assert.that(not abedul.esPequenio())
+	assert.that(abedul.esGrande())
+	assert.that(not abedul.esMediano())
+	abedul.consecuenciaDeIncendio()
+	assert.equals(abedul.altura(),495)
+	assert.that(abedul.estaVivo())
 }

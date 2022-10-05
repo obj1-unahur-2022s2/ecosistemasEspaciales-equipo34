@@ -1,23 +1,35 @@
 import reservaNatural.*
-const desierto = new Habitat()
+import especies.*
+
+const flora = new EspecieFlora()
+const fauna = new EspecieFauna()
+const elefante = new Animal(especie = fauna,locomocion = correr,estaVivo = true,pesoReferencia = 1500,peso = 3900)
+const tigre = new Animal(especie = fauna,locomocion = correr,estaVivo = true,pesoReferencia = 100,peso = 10)
+const gorila = new Animal(especie = fauna,locomocion = correr,estaVivo = true,pesoReferencia = 100,peso = 110)
+const abedul = new Planta(especie = flora,altura = 500)
+const selva = new Habitat()
 
 
-test "la reserva"
-{
+test "la reserva"{
 	
-
-assert.equals(reserva.habitatConMayorBiom(),0)
-assert.equals(reserva.contieneEspecie(tigre))
-assert.equals(reserva.habitatsNoEquilibrados(),0)
-assert.equals(reserva.biomasaTotal(),0)
+	selva.agregarSeresVivos(abedul)
+	selva.agregarSeresVivos(tigre)
+	selva.agregarSeresVivos(elefante)
+	selva.agregarSeresVivos(gorila)
+	reserva.agregarHabitat(selva)
+	assert.equals(reserva.habitatConMayorBiom(),selva)
+	assert.that(reserva.hayEspecieEnHabitats(tigre))
+	assert.equals(reserva.habitatsNoEquilibrados(),[selva])
+	assert.equals(reserva.biomasaTotal(),203962.66666)
 
 }
 
 test "habitats" {
 	
-	assert.equals(desierto.biomasaHabitat(),5) 
-	desierto.producirIncendio()
-	assert.equals(desierto.biomasaHabitat(),5) 
-
-	
+	selva.agregarSeresVivos(abedul)
+	selva.agregarSeresVivos(tigre)
+	selva.producirIncendio()
+	assert.that(abedul.estaVivo())
+	assert.notThat(tigre.estaVivo())
+	assert.notThat(selva.haySerVivo(tigre))
 }
